@@ -19,13 +19,14 @@
         const trackList = document.getElementById('track-list');
         const playBtn = document.getElementById('play');
         const audio = document.getElementById('audio');
-        let accessToken = ''; // 從 OAuth 獲取的 Access Token
+	import * as id from './id.js';
+	import * as client from './client.js';
+	const resultA = await id.decryptData(encryptedData, key, iv);
+	const resultB = await client.decryptData(encryptedData, key, iv);
+        let accessToken = ''; 
 
-        // OAuth 認證流程（簡化示例）
         function getAccessToken() {
-            const clientId = process.env.SPOTIFY_CLIENT_ID;
-            const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-            const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+            const basicAuth = Buffer.from(`${resultA}:${resultB}`).toString('base64');
 			
             return fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
