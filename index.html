@@ -25,9 +25,14 @@
         function getAccessToken() {
             const clientId = process.env.SPOTIFY_CLIENT_ID;
             const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-			const clientId = process.env.SPOTIFY_CLIENT_ID;
-			const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+	    const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
+	    const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
             const basicAuth = btoa(`${clientId}:${clientSecret}`);
+
+	    console.log('Spotify Client ID:', spotifyClientId);
+	    console.log('Spotify Client Secret:', spotifyClientSecret);
+	    console.log('Spotify Client ID:', clientId);
+	    console.log('Spotify Client Secret:', clientSecret);
 
             return fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
