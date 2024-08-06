@@ -28,6 +28,7 @@
 	    const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 	    const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
             const basicAuth = btoa(`${clientId}:${clientSecret}`);
+            const basicAuth = btoa(`${spotifyClientId}:${spotifyClientSecret}`);
 
 	    console.log('Spotify Client ID:', spotifyClientId);
 	    console.log('Spotify Client Secret:', spotifyClientSecret);
