@@ -28,3 +28,11 @@ jobs:
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+
+      - name: Use secrets in JavaScript
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        run: |
+          node -e "const spotifyClientId = process.env.SPOTIFY_CLIENT_ID; console.log('Spotify Client ID:', spotifyClientId);"
+          node -e "const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET; console.log('Spotify Client Secret:', spotifyClientSecret);"
