@@ -26,13 +26,9 @@
         const config = yaml.load(fs.readFileSync('config.yml', 'utf8'));
 
         function getAccessToken() {
-	    const spotifyClientId = config.env.SPOTIFY_CLIENT_ID;
-	    const spotifyClientSecret = config.env.SPOTIFY_CLIENT_SECRET;
-            const basicAuth = Buffer.from(`${spotifyClientId}:${spotifyClientSecret}`).toString('base64');
-
-	    console.log('Spotify Client ID:', spotifyClientId);
-	    console.log('Spotify Client Secret:', spotifyClientSecret);
-	    console.log('Basic Auth:', basicAuth);
+	    const clientId = config.env.client_id;
+	    const clientSecret = config.env.client_secret;
+	    const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
             return fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
