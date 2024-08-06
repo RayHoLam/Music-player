@@ -23,16 +23,12 @@
 
         // OAuth 認證流程（簡化示例）
         function getAccessToken() {
-            const clientId = process.env.SPOTIFY_CLIENT_ID;
-            const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 	    const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 	    const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-            const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+            const basicAuth = Buffer.from(`${spotifyClientId}:${spotifyClientSecret}`).toString('base64');
 
 	    console.log('Spotify Client ID:', spotifyClientId);
 	    console.log('Spotify Client Secret:', spotifyClientSecret);
-	    console.log('Spotify Client ID:', clientId);
-	    console.log('Spotify Client Secret:', clientSecret);
 
             return fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
