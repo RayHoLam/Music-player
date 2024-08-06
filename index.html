@@ -19,16 +19,20 @@
         const trackList = document.getElementById('track-list');
         const playBtn = document.getElementById('play');
         const audio = document.getElementById('audio');
-        let accessToken = ''; // 從 OAuth 獲取的 Access Token
+        let accessToken = ''; 
+	    
+	const fs = require('fs');
+        const yaml = require('js-yaml');
+        const config = yaml.load(fs.readFileSync('config.yml', 'utf8'));
 
-        // OAuth 認證流程（簡化示例）
         function getAccessToken() {
-	    const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
-	    const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+	    const spotifyClientId = config.env.SPOTIFY_CLIENT_ID;
+	    const spotifyClientSecret = config.env.SPOTIFY_CLIENT_SECRET;
             const basicAuth = Buffer.from(`${spotifyClientId}:${spotifyClientSecret}`).toString('base64');
 
 	    console.log('Spotify Client ID:', spotifyClientId);
 	    console.log('Spotify Client Secret:', spotifyClientSecret);
+	    console.log('Basic Auth:', basicAuth);
 
             return fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
